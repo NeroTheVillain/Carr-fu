@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="script.js"> 
+    <link rel="stylesheet" href="sw.js">
+    <title>Lista de Compras</title>
+</head>
+<body>
+
+    <h1><b>Lista de Compras 🛒</b></h1><br>
+
+    <div id="mainDiv"> 
+    <form id="compras">
+        Digite o produto: <input type="text" id="item" placeholder="Adicionar item">
+        <br>
+        Digite o valor R$ <input type="number" id="value" placeholder="Valor" min="0" step="0.01">
+        <button type="submit">Adicionar</button>
+    </form>
+
+        <ul id="itemList"></ul>
+
+    <div>
+        <span>Total: R$ <span id="totalValue"> 0.00 </span> </span>
+        <br> 
+        <button id="resetList" type="button"> Resetar Lista </button>
+    </div>
+    </div>
+    <script src="script.js"> </script>
+    <script>
+        if ('ServiceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Tudo certo, Service Worker registrado!', reg))
+            .catch(err => console.log('Ops! Erro ao registrar o Service Worker :(', err));
+        }
+    </script>
+</body>
+</html>
